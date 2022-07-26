@@ -15,27 +15,27 @@ import javax.validation.Valid;
 @RequestMapping("/admin")
 public class AdminController {
 
-    private final UserServiceImpl userService;
+    private final UserServiceImpl userServiceImpl;
 
     private final UserValidator userValidator;
     private static final String REDIRECT_ADMIN = "redirect:/admin";
 
     @Autowired
-    public AdminController(UserServiceImpl userService, UserValidator userValidator) {
-        this.userService = userService;
+    public AdminController(UserServiceImpl userServiceImpl, UserValidator userValidator) {
+        this.userServiceImpl = userServiceImpl;
         this.userValidator = userValidator;
     }
 
     @GetMapping
     public String index(Model model) {
-        model.addAttribute("users", userService.listUsers());
+        model.addAttribute("users", userServiceImpl.listUsers());
 
         return "admin/index";
     }
 
     @GetMapping("/{id}")
     public String show(@PathVariable("id") int id, Model model) {
-        model.addAttribute("user", userService.showById(id));
+        model.addAttribute("user", userServiceImpl.showById(id));
 
         return "admin/show";
     }
@@ -54,13 +54,13 @@ public class AdminController {
         if (bindingResult.hasErrors()) {
             return "admin/new";
         }
-        userService.add(user);
+        userServiceImpl.add(user);
         return REDIRECT_ADMIN;
     }
 
     @GetMapping("/{id}/edit")
     public String edit(Model model, @PathVariable("id") int id) {
-        model.addAttribute("user", userService.showById(id));
+        model.addAttribute("user", userServiceImpl.showById(id));
         return "admin/edit";
     }
 
@@ -73,13 +73,13 @@ public class AdminController {
         if (bindingResult.hasErrors())
             return "admin/edit";
 
-        userService.update(user, id);
+        userServiceImpl.update(user, id);
         return REDIRECT_ADMIN;
     }
 
     @DeleteMapping("/{id}")
     public String delete(@PathVariable("id") int id) {
-        userService.delete(id);
+        userServiceImpl.delete(id);
         return REDIRECT_ADMIN;
     }
 }

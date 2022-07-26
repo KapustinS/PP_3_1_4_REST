@@ -6,7 +6,6 @@ import org.springframework.stereotype.Repository;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
-import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
 
@@ -49,11 +48,9 @@ public class UserDaoImpl implements UserDao {
     @Override
     public Optional<User> showByUsername(String username) {
 
-        return Optional.ofNullable(
-                entityManager
-                        .createQuery("SELECT u FROM User u WHERE u.username= :username", User.class)
-                        .setParameter("username", username)
-                        .getSingleResult()
-        );
+        return entityManager
+                .createQuery("SELECT u FROM User u WHERE u.username= :username", User.class)
+                .setParameter("username", username)
+                .getResultList().stream().findAny();
     }
 }
