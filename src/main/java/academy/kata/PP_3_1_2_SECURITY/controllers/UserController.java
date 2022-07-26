@@ -10,10 +10,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 public class UserController {
 
     @GetMapping("/user")
-
     public String user( Model model, @AuthenticationPrincipal User user) {
         model.addAttribute("user", user);
-
         return "user";
     }
 }
