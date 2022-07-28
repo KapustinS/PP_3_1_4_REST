@@ -3,9 +3,7 @@ package academy.kata.PP_3_1_2_SECURITY.service;
 import academy.kata.PP_3_1_2_SECURITY.dao.UserDao;
 import academy.kata.PP_3_1_2_SECURITY.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.core.userdetails.UserDetailsService;
-import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -14,20 +12,24 @@ import java.util.Optional;
 
 @Service
 @Transactional(readOnly = true)
-public class UserServiceImpl implements UserService, UserDetailsService {
+public class UserServiceImpl implements UserService {
 
     private final UserDao userDao;
+    private final PasswordEncoder passwordEncoder;
 
 
     @Autowired
-    public UserServiceImpl(UserDao userDao) {
+    public UserServiceImpl(UserDao userDao, PasswordEncoder passwordEncoder) {
         this.userDao = userDao;
+        this.passwordEncoder = passwordEncoder;
     }
 
 
     @Transactional
     @Override
     public void add(User user) {
+        String encodedPassword = passwordEncoder.encode(user.getPassword());
+        user.setPassword(encodedPassword);
         userDao.add(user);
     }
 
@@ -46,6 +48,8 @@ public class UserServiceImpl implements UserService, UserDetailsService {
     @Override
     public void update(User user, int id) {
         user.setId(id);
+        String encodedPassword = passwordEncoder.encode(user.getPassword());
+        user.setPassword(encodedPassword);
         userDao.update(user);
     }
 
@@ -60,13 +64,4 @@ public class UserServiceImpl implements UserService, UserDetailsService {
         return userDao.showByUsername(username);
     }
 
-    @Override
-    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        Optional<User> optionalUser = userDao.showByUsername(username);
-
-        if (optionalUser.isEmpty()) {
-            throw new UsernameNotFoundException("User not found");
-        }
-        return optionalUser.get();
-    }
 }

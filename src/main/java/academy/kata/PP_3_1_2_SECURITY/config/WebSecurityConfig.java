@@ -1,5 +1,6 @@
 package academy.kata.PP_3_1_2_SECURITY.config;
 
+import academy.kata.PP_3_1_2_SECURITY.service.UserDetailsServiceImpl;
 import academy.kata.PP_3_1_2_SECURITY.service.UserServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
@@ -8,6 +9,7 @@ import org.springframework.security.config.annotation.authentication.builders.Au
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.NoOpPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
@@ -15,12 +17,12 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 @EnableWebSecurity
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
-    private final UserServiceImpl userServiceImpl;
+    private final UserDetailsServiceImpl userDetailsService;
     private final SuccessUserHandler successUserHandler;
 
     @Autowired
-    public WebSecurityConfig(UserServiceImpl userServiceImpl, SuccessUserHandler successUserHandler) {
-        this.userServiceImpl = userServiceImpl;
+    public WebSecurityConfig(UserDetailsServiceImpl userDetailsService, SuccessUserHandler successUserHandler) {
+        this.userDetailsService = userDetailsService;
         this.successUserHandler = successUserHandler;
     }
 
@@ -42,13 +44,13 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception{
-        auth.userDetailsService(userServiceImpl)
+        auth.userDetailsService(userDetailsService)
                 .passwordEncoder(getPasswordEncoder());
 
     }
 
     @Bean
     public PasswordEncoder getPasswordEncoder(){
-        return NoOpPasswordEncoder.getInstance();
+        return new BCryptPasswordEncoder();
     }
 }
