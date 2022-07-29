@@ -46,11 +46,11 @@ public class UserDaoImpl implements UserDao {
     }
 
     @Override
-    public Optional<User> showByUsername(String username) {
+    public Optional<User> showByEmail(String email) {
 
         return entityManager
-                .createQuery("SELECT u FROM User u WHERE u.username= :username", User.class)
-                .setParameter("username", username)
+                .createQuery("SELECT u FROM User u WHERE u.email= :email", User.class)
+                .setParameter("email", email)
                 .getResultList().stream().findAny();
     }
 }

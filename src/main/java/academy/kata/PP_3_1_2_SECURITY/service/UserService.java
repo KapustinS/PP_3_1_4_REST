@@ -1,7 +1,6 @@
 package academy.kata.PP_3_1_2_SECURITY.service;
 
 
-import academy.kata.PP_3_1_2_SECURITY.dao.UserDao;
 import academy.kata.PP_3_1_2_SECURITY.model.User;
 
 import java.util.List;
@@ -18,5 +17,5 @@ public interface UserService {
 
     void delete(int id);
 
-    Optional<User> showByUsername(String username);
+    Optional<User> showByEmail(String email);
 }

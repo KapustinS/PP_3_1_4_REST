@@ -60,8 +60,8 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public Optional<User> showByUsername(String username) {
-        return userDao.showByUsername(username);
+    public Optional<User> showByEmail(String email) {
+        return userDao.showByEmail(email);
     }
 
 }

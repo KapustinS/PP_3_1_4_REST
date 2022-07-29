@@ -18,5 +18,5 @@ public interface UserDao {
 
     void delete(int id);
 
-    Optional<User> showByUsername(String username);
+    Optional<User> showByEmail(String email);
 }

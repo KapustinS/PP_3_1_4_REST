@@ -22,7 +22,7 @@ public class UserDetailsServiceImpl implements UserDetailsService {
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        Optional<User> optionalUser = userDao.showByUsername(username);
+        Optional<User> optionalUser = userDao.showByEmail(username);
 
         if (optionalUser.isEmpty()) {
             throw new UsernameNotFoundException("User not found");

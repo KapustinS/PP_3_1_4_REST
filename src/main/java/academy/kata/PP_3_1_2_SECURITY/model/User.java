@@ -3,9 +3,9 @@ package academy.kata.PP_3_1_2_SECURITY.model;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
-import javax.jms.JMSPasswordCredential;
 import javax.persistence.*;
 import javax.validation.constraints.Email;
+import javax.validation.constraints.Min;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Size;
 import java.util.Collection;
@@ -20,10 +20,9 @@ public class User implements UserDetails {
     @Column(name = "id")
     private int id;
 
-    @NotEmpty(message = "Name should not be empty")
-    @Size(min = 3, max = 30, message = "Name should be between 3 and 30 characters")
-    @Column(name = "username")
-    private String username;
+    @Email
+    @Column(name = "email")
+    private String email;
 
     @NotEmpty(message = "Password should not be empty")
     @Size(min = 2, message = "Password should be minimum 2 characters")
@@ -33,10 +32,19 @@ public class User implements UserDetails {
     @Transient
     private String passwordConfirm;
 
-    @Email
+    @Size(min = 1, max = 30, message = "First name should be between 1 and 30 characters")
     @NotEmpty(message = "Name should not be empty")
-    @Column(name = "email")
-    private String email;
+    @Column(name = "first_name")
+    private String firstName;
+
+    @Size(min = 1, max = 30, message = "Last name should be between 1 and 30 characters")
+    @NotEmpty(message = "Name should not be empty")
+    @Column(name = "last_name")
+    private String lastName;
+
+    @Min(0)
+    @Column(name = "age")
+    private int age;
 
     @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(name = "user_role",
@@ -47,11 +55,12 @@ public class User implements UserDetails {
     public User() {
     }
 
-    public User(String username, String password, String passwordConfirm, String email, Set<Role> roles) {
-        this.username = username;
-        this.password = password;
-        this.passwordConfirm = passwordConfirm;
+    public User(String email, String password, String firstName, String lastName, int age, Set<Role> roles) {
         this.email = email;
+        this.password = password;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.age = age;
         this.roles = roles;
     }
 
@@ -63,12 +72,12 @@ public class User implements UserDetails {
         this.id = id;
     }
 
-    public String getUsername() {
-        return username;
+    public String getEmail() {
+        return email;
     }
 
-    public void setUsername(String username) {
-        this.username = username;
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     public String getPassword() {
@@ -87,12 +96,29 @@ public class User implements UserDetails {
         this.passwordConfirm = passwordConfirm;
     }
 
-    public String getEmail() {
-        return email;
+    public String getFirstName() {
+        return firstName;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
+
+    public int getAge() {
+        return age;
+    }
+
+    public void setAge(int age) {
+        this.age = age;
     }
 
     public Set<Role> getRoles() {
@@ -104,12 +130,8 @@ public class User implements UserDetails {
     }
 
     @Override
-    public String toString() {
-        return "User{" +
-                "id=" + id +
-                ", username='" + username + '\'' +
-                ", email='" + email + '\'' +
-                '}';
+    public String getUsername() {
+        return getEmail();
     }
 
     @Override

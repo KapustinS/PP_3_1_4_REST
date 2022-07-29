@@ -27,8 +27,8 @@ public class UserValidator implements Validator {
     public void validate(Object target, Errors errors) {
         User user = (User) target;
 
-        if(checkExistUserByUsername(user.getUsername())){
-            errors.rejectValue("username", "", "User Exist");
+        if(checkExistUserByUsername(user.getEmail())){
+            errors.rejectValue("email", "", "Email Exist");
         }
 
         if (!user.getPasswordConfirm().equals(user.getPassword())) {
@@ -36,7 +36,7 @@ public class UserValidator implements Validator {
         }
     }
 
-    public boolean checkExistUserByUsername(String username){
-        return userService.showByUsername(username).isPresent();
+    public boolean checkExistUserByUsername(String email){
+        return userService.showByEmail(email).isPresent();
     }
 }
