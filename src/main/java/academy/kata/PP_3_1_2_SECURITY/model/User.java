@@ -9,6 +9,7 @@ import javax.validation.constraints.Min;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Size;
 import java.util.Collection;
+import java.util.Iterator;
 import java.util.Set;
 
 @Entity
@@ -38,7 +39,7 @@ public class User implements UserDetails {
     private String firstName;
 
     @Size(min = 1, max = 30, message = "Last name should be between 1 and 30 characters")
-    @NotEmpty(message = "Name should not be empty")
+    @NotEmpty(message = "Last Name should not be empty")
     @Column(name = "last_name")
     private String lastName;
 
@@ -54,6 +55,7 @@ public class User implements UserDetails {
 
     public User() {
     }
+
 
     public User(String email, String password, String firstName, String lastName, int age, Set<Role> roles) {
         this.email = email;
@@ -158,4 +160,10 @@ public class User implements UserDetails {
     public Collection<? extends GrantedAuthority> getAuthorities() {
         return getRoles();
     }
+
+    @Override
+    public String toString() {
+        return super.toString();
+    }
+
 }

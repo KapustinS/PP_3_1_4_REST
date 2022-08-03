@@ -21,22 +21,6 @@
     <input type="submit" value="Logout"/>
 </form>
 
-<table class="table table-dark">
-    <thead>
-    <tr>
-        <th scope="col">ID</th>
-        <th scope="col">Email</th>
-        <th scope="col">First name</th>
-    </tr>
-    </thead>
-    <tbody>
-    <tr  th:each="user: ${users}">
-        <td th:text="${user.getId()}"/>
-        <td th:text="${user.getEmail()}"/>
-        <td th:text="${user.getFirstName()}"/>
-    </tr>
-    </tbody>
-</table>
 
 </body>
 </html>

@@ -30,7 +30,7 @@ public class AdminController {
     public String index(Model model) {
         model.addAttribute("users", userServiceImpl.listUsers());
 
-        return "admin/index";
+        return "admin/adminPage";
     }
 
     @GetMapping("/{id}")
@@ -45,7 +45,7 @@ public class AdminController {
         return "admin/new";
     }
 
-    @PostMapping
+    @PostMapping("/new")
     public String create(@ModelAttribute("user") @Valid User user
             , BindingResult bindingResult) {
 

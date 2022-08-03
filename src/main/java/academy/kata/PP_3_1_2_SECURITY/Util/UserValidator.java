@@ -31,9 +31,9 @@ public class UserValidator implements Validator {
             errors.rejectValue("email", "", "Email Exist");
         }
 
-        if (!user.getPasswordConfirm().equals(user.getPassword())) {
-            errors.rejectValue("passwordConfirm", "Diff.userForm.passwordConfirm", "Password not confirmed");
-        }
+//        if (!user.getPasswordConfirm().equals(user.getPassword())) {
+//            errors.rejectValue("passwordConfirm", "Diff.userForm.passwordConfirm", "Password not confirmed");
+//        }
     }
 
     public boolean checkExistUserByUsername(String email){
