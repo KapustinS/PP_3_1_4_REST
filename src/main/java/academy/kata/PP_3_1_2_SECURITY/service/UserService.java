@@ -1,6 +1,7 @@
 package academy.kata.PP_3_1_2_SECURITY.service;
 
 
+import academy.kata.PP_3_1_2_SECURITY.model.Role;
 import academy.kata.PP_3_1_2_SECURITY.model.User;
 
 import java.util.List;
@@ -18,4 +19,6 @@ public interface UserService {
     void delete(int id);
 
     Optional<User> showByEmail(String email);
+
+    List<Role> getAllAvailableRoles();
 }

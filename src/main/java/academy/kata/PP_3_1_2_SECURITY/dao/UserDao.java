@@ -1,5 +1,6 @@
 package academy.kata.PP_3_1_2_SECURITY.dao;
 
+import academy.kata.PP_3_1_2_SECURITY.model.Role;
 import academy.kata.PP_3_1_2_SECURITY.model.User;
 import org.springframework.stereotype.Repository;
 
@@ -19,4 +20,6 @@ public interface UserDao {
     void delete(int id);
 
     Optional<User> showByEmail(String email);
+
+    List<Role> getAllAvailableRoles();
 }

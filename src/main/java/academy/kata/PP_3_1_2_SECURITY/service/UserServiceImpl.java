@@ -1,6 +1,7 @@
 package academy.kata.PP_3_1_2_SECURITY.service;
 
 import academy.kata.PP_3_1_2_SECURITY.dao.UserDao;
+import academy.kata.PP_3_1_2_SECURITY.model.Role;
 import academy.kata.PP_3_1_2_SECURITY.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -62,6 +63,12 @@ public class UserServiceImpl implements UserService {
     @Override
     public Optional<User> showByEmail(String email) {
         return userDao.showByEmail(email);
+    }
+
+    @Override
+    public List<Role> getAllAvailableRoles() {
+        System.out.println(userDao.getAllAvailableRoles());
+        return userDao.getAllAvailableRoles();
     }
 
 }

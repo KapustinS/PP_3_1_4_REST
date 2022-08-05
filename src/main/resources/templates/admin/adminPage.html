@@ -248,48 +248,65 @@
                                 <div class="row">
                                     <div class="col-4 bg-white"></div>
                                     <div class="col-4 bg-white font-weight-bold">
-<!--                                        <div th:method="POST" th:action="@{/admin/}" th:object="${user}">-->
-<!--                                            <div class="container-fluid text-center w">-->
-<!--                                                <div class="form-group">-->
-<!--                                                    <label for="firstNameNew">First name</label>-->
-<!--                                                    <input type="text" class="form-control" id="firstNameNew"-->
-<!--                                                           placeholder="First name" th:field="*{firstName}">-->
-<!--                                                    <div style="color:red" th:if="${#fields.hasErrors('firstName')}" th:errors="*{firstName}">First name Error</div>-->
-<!--                                                </div>-->
-<!--                                                <div class="form-group">-->
-<!--                                                    <label for="lastNameNew">Last name</label>-->
-<!--                                                    <input type="text" class="form-control" id="lastNameNew"-->
-<!--                                                           placeholder="Last name" th:field="*{lastName}">-->
-<!--                                                    <div style="color:red" th:if="${#fields.hasErrors('lastName')}" th:errors="*{lastName}">Last name Error</div>-->
-<!--                                                </div>-->
-<!--                                                <div class="form-group">-->
-<!--                                                    <label for="AgeNew">Age</label>-->
-<!--                                                    <input type="number" class="form-control" id="AgeNew"-->
-<!--                                                           placeholder="Age" th:field="*{age}">-->
-<!--                                                    div style="color:red" th:if="${#fields.hasErrors('age')}" th:errors="*{age}">Age Error</div>-->
-<!--                                                <div class="form-group">-->
-<!--                                                    <label for="EmailNew">Email</label>-->
-<!--                                                    <input type="text" class="form-control" id="EmailNew"-->
-<!--                                                           placeholder="Email"  th:field="*{email}">-->
-<!--                                                    <div style="color:red" th:if="${#fields.hasErrors('Email')}" th:errors="*{email}">Email Error</div>-->
-<!--                                                </div>-->
-<!--                                                <div class="form-group">-->
-<!--                                                    <label for="PasswordNew">Password</label>-->
-<!--                                                    <input type="password" class="form-control" id="PasswordNew"-->
-<!--                                                           placeholder="Password" th:field="*{password}">-->
-<!--                                                </div>-->
-<!--                                                <div class="form-group">-->
-<!--                                                    <label for="RoleNew">Role</label>-->
-<!--                                                    <select multiple class="form-control" id="RoleNew" size="2">-->
-<!--                                                        <th:block th:each="role, iter:${userNew.getRoles()}">-->
-<!--                                                            <option th:text="${role}"></option>-->
-<!--                                                        </th:block>-->
+                                        <form th:method="POST"
+                                              th:action="@{/admin/add}"
+                                              th:object="${newUser}">
+
+                                            <div class="container-fluid text-center w">
+                                                <div class="form-group">
+                                                    <label for="firstNameNew">First name</label>
+                                                    <input type="text" class="form-control"
+                                                           id="firstNameNew"
+                                                           placeholder="First name"
+                                                           th:field="*{firstName}">
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="lastNameNew">Last name</label>
+                                                    <input type="text" class="form-control"
+                                                           id="lastNameNew"
+                                                           placeholder="Last name"
+                                                           th:field="*{lastName}">
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="AgeNew">Age</label>
+                                                    <input type="number" class="form-control"
+                                                           id="AgeNew"
+                                                           placeholder="Age"
+                                                           th:field="*{age}">
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="EmailNew">Email</label>
+                                                    <input type="text" class="form-control"
+                                                           id="EmailNew"
+                                                           placeholder="Email"
+                                                           th:field="*{email}">
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="PasswordNew">Password</label>
+                                                    <input type="password" class="form-control"
+                                                           id="PasswordNew"
+                                                           placeholder="Password"
+                                                           th:field="*{password}">
+                                                </div>
+                                                <div class="form-group text-center">
+                                                    <label for="RoleNew">Role</label>
+                                                    <select multiple class="custom-select" name="role" id="RoleNew" size="2"
+                                                            th:field="*{roles}">
+                                                        <option th:each="role: ${allRoles}"
+                                                                th:value="${role.getId()}"
+                                                                th:text="${role.toString()}"></option>
+                                                    </select>
+<!--                                                    <select class="form-control" name="role" id="RoleNew" size="2">-->
+<!--                                                        <option th:utext="Admin" th:value="ROLE_ADMIN"></option>-->
+<!--                                                        <option th:utext="User" th:value="ROLE_USER"></option>-->
+<!--                                                        <option>JUST an option(non clickable)</option>-->
 <!--                                                    </select>-->
-<!--                                                </div>-->
-<!--                                            </div>-->
-<!--                                        </div>-->
-                                            <div class="col text-center">
-                                                <button type="submit" class="btn btn-success btn-lg">Add new user</button>
+                                                </div>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <div class="col text-center">
+                                                    <button type="submit" class="btn btn-success btn-lg">Add new user</button>
+                                                </div>
                                             </div>
                                         </form>
                                     </div>

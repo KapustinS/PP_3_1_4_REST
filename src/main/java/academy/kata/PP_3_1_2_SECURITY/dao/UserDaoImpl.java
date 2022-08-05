@@ -1,5 +1,6 @@
 package academy.kata.PP_3_1_2_SECURITY.dao;
 
+import academy.kata.PP_3_1_2_SECURITY.model.Role;
 import academy.kata.PP_3_1_2_SECURITY.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -8,6 +9,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import java.util.List;
 import java.util.Optional;
+import java.util.Set;
 
 @Repository
 public class UserDaoImpl implements UserDao {
@@ -52,5 +54,13 @@ public class UserDaoImpl implements UserDao {
                 .createQuery("SELECT u FROM User u WHERE u.email= :email", User.class)
                 .setParameter("email", email)
                 .getResultList().stream().findAny();
+    }
+
+    @Override
+    public List<Role> getAllAvailableRoles() {
+
+        return entityManager
+                .createQuery("SELECT r FROM Role r", Role.class)
+                .getResultList();
     }
 }

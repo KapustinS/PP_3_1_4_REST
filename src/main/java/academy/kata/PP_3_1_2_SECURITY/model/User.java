@@ -21,7 +21,7 @@ public class User implements UserDetails {
     @Column(name = "id")
     private int id;
 
-    @Email
+//    @Email
     @Column(name = "email")
     private String email;
 
