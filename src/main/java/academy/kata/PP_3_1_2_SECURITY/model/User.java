@@ -25,25 +25,25 @@ public class User implements UserDetails {
     @Column(name = "email")
     private String email;
 
-    @NotEmpty(message = "Password should not be empty")
-    @Size(min = 2, message = "Password should be minimum 2 characters")
+//    @NotEmpty(message = "Password should not be empty")
+//    @Size(min = 2, message = "Password should be minimum 2 characters")
     @Column(name = "password")
     private String password;
 
     @Transient
     private String passwordConfirm;
 
-    @Size(min = 1, max = 30, message = "First name should be between 1 and 30 characters")
-    @NotEmpty(message = "Name should not be empty")
+//    @Size(min = 1, max = 30, message = "First name should be between 1 and 30 characters")
+//    @NotEmpty(message = "Name should not be empty")
     @Column(name = "first_name")
     private String firstName;
 
-    @Size(min = 1, max = 30, message = "Last name should be between 1 and 30 characters")
-    @NotEmpty(message = "Last Name should not be empty")
+//    @Size(min = 1, max = 30, message = "Last name should be between 1 and 30 characters")
+//    @NotEmpty(message = "Last Name should not be empty")
     @Column(name = "last_name")
     private String lastName;
 
-    @Min(0)
+//    @Min(0)
     @Column(name = "age")
     private int age;
 
