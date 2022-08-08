@@ -3,7 +3,6 @@ package academy.kata.PP_3_1_2_SECURITY.model;
 import org.springframework.security.core.GrantedAuthority;
 
 import javax.persistence.*;
-import javax.validation.constraints.NotEmpty;
 import java.util.Set;
 
 @Entity
@@ -15,7 +14,6 @@ public class Role implements GrantedAuthority {
     @Column(name = "id")
     private int id;
 
-    @NotEmpty
     @Column(name = "name")
     private String name;
 

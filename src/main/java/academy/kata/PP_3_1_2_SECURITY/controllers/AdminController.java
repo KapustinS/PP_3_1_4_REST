@@ -60,36 +60,4 @@ public class AdminController {
         return REDIRECT_ADMIN;
     }
 
-//============================
-//    @GetMapping("/{id}")
-//    public String show(@PathVariable("id") int id, Model model) {
-//        model.addAttribute("user", userServiceImpl.showById(id));
-//
-//        return "admin/show";
-//    }
-//
-//    @GetMapping("/{id}/edit")
-//    public String edit(Model model, @PathVariable("id") int id) {
-//        model.addAttribute("user", userServiceImpl.showById(id));
-//        return "admin/edit";
-//    }
-//
-//    @PatchMapping("/{id}")
-//    public String update(@ModelAttribute("user") @Valid User user, BindingResult bindingResult,
-//                         @PathVariable("id") int id) {
-//
-//        userValidator.validate(user, bindingResult);
-//
-//        if (bindingResult.hasErrors())
-//            return "admin/edit";
-//
-//        userServiceImpl.update(user, id);
-//        return REDIRECT_ADMIN;
-//    }
-//
-//    @DeleteMapping("/{id}")
-//    public String delete(@PathVariable("id") int id) {
-//        userServiceImpl.delete(id);
-//        return REDIRECT_ADMIN;
-//    }
 }

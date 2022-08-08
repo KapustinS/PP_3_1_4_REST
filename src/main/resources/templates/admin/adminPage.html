@@ -46,21 +46,14 @@
             <ul class="nav nav-pills flex-column">
 
                 <li class="nav-item">
-                    <a class="nav-link active" data-toggle="tab"
-                       id="list-home-list"
-                       aria-controls="home"
-                       role="tab"
-                       href="#list-home"
+                    <a class="nav-link active"
+                       th:href="@{/admin}"
                        sec:authorize="hasAuthority('ROLE_ADMIN')"
                     >Admin</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" data-toggle="tab"
-                       id="list-profile-list"
-                       aria-controls="profile"
-                       role="tab"
-                       href="#list-profile"
-                       aria-labelledby="list-profile-list"
+                    <a class="nav-link"
+                       th:href="@{/user}"
                        sec:authorize="hasAuthority('ROLE_USER')"
                     >User</a>
                 </li>
@@ -158,19 +151,19 @@
                                                                                             <label for="lastNameEdit">Last name</label>
                                                                                             <input type="text" class="form-control" id="lastNameEdit"
                                                                                                    name="lastName"
-                                                                                                   th:value="${user.lastName}">
+                                                                                                   th:value="*{lastName}">
                                                                                         </div>
                                                                                         <div class="form-group">
                                                                                             <label for="AgeEdit">Age</label>
                                                                                             <input type="number" class="form-control" id="AgeEdit"
                                                                                                    name="age"
-                                                                                                   th:value="${user.age}">
+                                                                                                   th:value="*{age}">
                                                                                         </div>
                                                                                         <div class="form-group">
                                                                                             <label for="EmailEdit">Email</label>
                                                                                             <input type="text" class="form-control" id="EmailEdit"
                                                                                                    name="email"
-                                                                                                   th:value="${user.email}">
+                                                                                                   th:value="*{email}">
                                                                                         </div>
                                                                                         <div class="form-group">
                                                                                             <label for="PasswordEdit">Password</label>
@@ -180,7 +173,7 @@
                                                                                         <div class="form-group">
                                                                                             <label for="RoleEdit">Role</label>
                                                                                             <select multiple class="custom-select" name="role" id="RoleEdit" size="2"
-                                                                                                    th:field="${user.roles}">
+                                                                                                    th:field="*{roles}">
                                                                                                 <option th:each="role: ${allRoles}"
                                                                                                         th:value="${role.getId()}"
                                                                                                         th:text="${role.toString()}"></option>
@@ -368,40 +361,6 @@
                         </div>
                     </div>
                 </div>
-                <div class="tab-pane fade" id="list-profile" role="tabpanel" aria-labelledby="list-profile-list" sec:authorize="hasAuthority('ROLE_USER')">
-                <h1>User information-page</h1>
-                <div class="card">
-                    <h5 class="card-header">About user</h5>
-                    <div class="card-body">
-                        <table class="table table-striped ">
-                            <thead>
-                            <tr>
-                                <th scope="col">ID</th>
-                                <th scope="col">First name</th>
-                                <th scope="col">Last name</th>
-                                <th scope="col">Age</th>
-                                <th scope="col">Email</th>
-                                <th scope="col">Role</th>
-                            </tr>
-                            </thead>
-                            <tbody>
-                            <tr>
-                                <td th:text="${authUser.id}"></td>
-                                <td th:text="${authUser.firstName}"></td>
-                                <td th:text="${authUser.lastName}"></td>
-                                <td th:text="${authUser.age}"></td>
-                                <td th:text="${authUser.email}"></td>
-                                <td>
-                                    <th:block th:each="role, iter:${authUser.getRoles()}">
-                                        <span th:text="${role}"></span>
-                                    </th:block>
-                                </td>
-                            </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-            </div>
             </div>
         </div>
     </div>

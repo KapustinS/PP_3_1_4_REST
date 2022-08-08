@@ -1,5 +1,9 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
+<meta content="text/html; charset=UTF-8" http-equiv="Content-Type"/>
+
 <head>
     <meta charset="UTF-8">
     <title>User</title>
@@ -11,7 +15,14 @@
 <!--Потолок-->
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <div class="container-fluid">
-        <a class="navbar-brand " href="#">Email roles:</a>
+        <div class="navbar-text font-weight h5" style="color: white">
+            <span class="font-weight-bold"  sec:authentication="name"></span>
+            with roles:
+            <th:block th:each="role, iter:${#authentication.getAuthorities()}">
+                <span th:text="${role}"></span>
+            </th:block>
+        </div>
+
         <span>
             <a class="navbar-text" href="/logout">
                 Logout
@@ -23,65 +34,68 @@
 <body>
 <div class="container-fluid">
     <div class="row">
-    <!--навигация слева-->
-    <div class="col-2 bg-white"
-         style="padding-top: 20px;
+        <!--навигация слева-->
+        <div class="col-2 bg-white"
+             style="padding-top: 20px;
                         padding-left: 0px;
                         padding-right: 0px;
                         height: 100vh">
 
-        <ul class="nav nav-pills flex-column">
+            <ul class="nav nav-pills flex-column">
 
-            <li class="nav-item">
-                <a class="nav-link" data-toggle="tab" href="/admin/admin">Admin</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link active" href="/user">User</a>
-            </li>
-        </ul>
-    </div>
+                <li class="nav-item">
+                    <a class="nav-link"
+                       th:href="@{/admin}"
+                       sec:authorize="hasAuthority('ROLE_ADMIN')"
+                    >Admin</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active"
+                       th:href="@{/user}"
+                       aria-labelledby="list-profile-list"
+                       sec:authorize="hasAuthority('ROLE_USER')"
+                    >User</a>
+                </li>
+            </ul>
+        </div>
 
-    <!--Рабочая область-->
-    <div class="col-10 card-header">
-        <h1>User information-page</h1>
-        <div class="card">
-            <h5 class="card-header">About user</h5>
-            <div class="card-body">
-        <table class="table table-striped ">
-            <thead>
-            <tr>
-                <th scope="col">ID</th>
-                <th scope="col">First name</th>
-                <th scope="col">Last name</th>
-                <th scope="col">Age</th>
-                <th scope="col">Email</th>
-                <th scope="col">Role</th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr>
-                <td>44</td>
-                <td>Mark</td>
-                <td>Otto</td>
-                <td>@mdo</td>
-                <td>@mdo</td>
-                <td>@mdo</td>
-            </tr>
-            </tbody>
-        </table>
-    </div>
+        <!--Рабочая область-->
+        <div class="col-10 card-header">
+            <h1>User information-page</h1>
+            <div class="card">
+                <h5 class="card-header">About user</h5>
+                <div class="card-body">
+                    <table class="table table-striped ">
+                        <thead>
+                        <tr>
+                            <th scope="col">ID</th>
+                            <th scope="col">First name</th>
+                            <th scope="col">Last name</th>
+                            <th scope="col">Age</th>
+                            <th scope="col">Email</th>
+                            <th scope="col">Role</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td th:text="${authUser.id}"></td>
+                            <td th:text="${authUser.firstName}"></td>
+                            <td th:text="${authUser.lastName}"></td>
+                            <td th:text="${authUser.age}"></td>
+                            <td th:text="${authUser.email}"></td>
+                            <td>
+                                <th:block th:each="role, iter:${authUser.getRoles()}">
+                                    <span th:text="${role}"></span>
+                                </th:block>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
         </div>
     </div>
 </div>
-</div>
 
-<!--<p th:text="${'Email: ' + user.getEmail()}">VALUE</p>-->
-<!--<p th:text="${'First name: ' + user.getFirstName()}">VALUE</p>-->
-<!--<p th:text="${'User ID: ' + user.getId()}">VALUE</p>-->
-
-
-<!--<form th:action="@{/logout}" th:method="POST">-->
-<!--    <input type="submit" value="Logout"/>-->
-<!--</form>-->
 </body>
 </html>
