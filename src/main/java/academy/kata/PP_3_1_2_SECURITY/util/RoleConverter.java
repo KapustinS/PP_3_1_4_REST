@@ -1,5 +1,6 @@
-package academy.kata.PP_3_1_2_SECURITY.model;
+package academy.kata.PP_3_1_2_SECURITY.util;
 
+import academy.kata.PP_3_1_2_SECURITY.model.Role;
 import academy.kata.PP_3_1_2_SECURITY.service.UserService;
 import academy.kata.PP_3_1_2_SECURITY.service.UserServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
