@@ -1,4 +1,4 @@
-package academy.kata.PP_3_1_2_SECURITY.model;
+package academy.kata.PP_3_1_4_REST.model;
 
 import org.springframework.security.core.GrantedAuthority;
 

@@ -1,11 +1,10 @@
-package academy.kata.PP_3_1_2_SECURITY.config;
+package academy.kata.PP_3_1_4_REST.config;
 
-import academy.kata.PP_3_1_2_SECURITY.service.UserDetailsServiceImpl;
+import academy.kata.PP_3_1_4_REST.service.UserDetailsServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.PropertySource;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;

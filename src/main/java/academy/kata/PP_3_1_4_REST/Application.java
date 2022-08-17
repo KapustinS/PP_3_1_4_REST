@@ -1,4 +1,4 @@
-package academy.kata.PP_3_1_2_SECURITY;
+package academy.kata.PP_3_1_4_REST;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

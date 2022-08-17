@@ -1,16 +1,12 @@
-package academy.kata.PP_3_1_2_SECURITY.controllers;
+package academy.kata.PP_3_1_4_REST.controllers;
 
-import academy.kata.PP_3_1_2_SECURITY.model.User;
-import academy.kata.PP_3_1_2_SECURITY.service.UserServiceImpl;
+import academy.kata.PP_3_1_4_REST.model.User;
+import academy.kata.PP_3_1_4_REST.service.UserServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.authority.AuthorityUtils;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.ArrayList;
-import java.util.List;
 
 @Controller
 @RequestMapping("/admin")

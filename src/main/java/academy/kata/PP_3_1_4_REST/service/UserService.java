@@ -1,8 +1,8 @@
-package academy.kata.PP_3_1_2_SECURITY.service;
+package academy.kata.PP_3_1_4_REST.service;
 
 
-import academy.kata.PP_3_1_2_SECURITY.model.Role;
-import academy.kata.PP_3_1_2_SECURITY.model.User;
+import academy.kata.PP_3_1_4_REST.model.Role;
+import academy.kata.PP_3_1_4_REST.model.User;
 
 import java.util.List;
 import java.util.Optional;

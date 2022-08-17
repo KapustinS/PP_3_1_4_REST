@@ -1,7 +1,7 @@
-package academy.kata.PP_3_1_2_SECURITY.controllers;
+package academy.kata.PP_3_1_4_REST.controllers;
 
-import academy.kata.PP_3_1_2_SECURITY.model.User;
-import academy.kata.PP_3_1_2_SECURITY.service.UserService;
+import academy.kata.PP_3_1_4_REST.model.User;
+import academy.kata.PP_3_1_4_REST.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.core.userdetails.UserDetails;

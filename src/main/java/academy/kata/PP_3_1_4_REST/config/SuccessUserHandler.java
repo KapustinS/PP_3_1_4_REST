@@ -1,4 +1,4 @@
-package academy.kata.PP_3_1_2_SECURITY.config;
+package academy.kata.PP_3_1_4_REST.config;
 
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.authority.AuthorityUtils;

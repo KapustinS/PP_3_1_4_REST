@@ -1,7 +1,7 @@
-package academy.kata.PP_3_1_2_SECURITY.dao;
+package academy.kata.PP_3_1_4_REST.dao;
 
-import academy.kata.PP_3_1_2_SECURITY.model.Role;
-import academy.kata.PP_3_1_2_SECURITY.model.User;
+import academy.kata.PP_3_1_4_REST.model.Role;
+import academy.kata.PP_3_1_4_REST.model.User;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;

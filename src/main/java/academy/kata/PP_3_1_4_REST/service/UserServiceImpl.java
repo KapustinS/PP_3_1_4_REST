@@ -1,8 +1,8 @@
-package academy.kata.PP_3_1_2_SECURITY.service;
+package academy.kata.PP_3_1_4_REST.service;
 
-import academy.kata.PP_3_1_2_SECURITY.dao.UserDao;
-import academy.kata.PP_3_1_2_SECURITY.model.Role;
-import academy.kata.PP_3_1_2_SECURITY.model.User;
+import academy.kata.PP_3_1_4_REST.dao.UserDao;
+import academy.kata.PP_3_1_4_REST.model.Role;
+import academy.kata.PP_3_1_4_REST.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
